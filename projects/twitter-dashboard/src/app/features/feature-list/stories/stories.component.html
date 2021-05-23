@@ -1,0 +1,73 @@
+
+    <div class="container" style="padding: 20px 0px;">
+      <div [ngClass]="routeAnimationsElements">
+        <h1 [ngClass]="routeAnimationsElements">Stories</h1>
+    
+          <div class="stories-section" [ngClass]="routeAnimationsElements" *ngIf="!isLoading">
+            <div id="leftElem" class="left-section" [ngClass]="routeAnimationsElements">
+              <ul id="ulElem">
+                <li [ngClass]="routeAnimationsElements" class="status-main" [ngClass]=" item && item.isActive ? 'active':''" (click)="statusClick(item)" *ngFor="let item of items;">
+                  <div>
+                    <img *ngIf="item.imageUrl" class="img-circle" src="{{item.imageUrl}}">
+                    <!-- <label *ngIf="!item.imageUrl" class="circle">{{item && item.name && item.name[0]}}</label> -->
+                  </div>
+      
+                  <div class="nameDiv" [ngClass]="routeAnimationsElements">
+                    <div class="name">
+                      {{item && item.name}}  
+                    </div>
+                    <div class="time" [ngClass]="routeAnimationsElements">
+                      {{item && item.time}}  
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="right-section">
+              <a title="Close Story" [ngClass]="routeAnimationsElements" *ngIf="selectedStory" class="nextBtn1 text-right" (click)="closeStories()">X</a>
+
+              <div class="content" *ngIf="selectedItem && selectedStory">
+                <label class="story-name" [ngClass]="routeAnimationsElements">... {{selectedItem.name}} {{currentStoryIndex+1}}/{{selectedItem.stories.length}}</label>
+                <a title="Previous Story" [ngClass]="routeAnimationsElements" [ngClass]="selectedItem.index == 0 ? 'visibilityHidden':''" class="nextBtn" (click)="prevBtnAction()">{{prev}}</a>
+                <img class="statusImg" [ngClass]="routeAnimationsElements" src="{{selectedStory.imageUrl}}" >
+                <label class="story-des" [ngClass]="routeAnimationsElements">{{selectedStory.storyDescription}}</label>
+                <a title="Next Status" [ngClass]="routeAnimationsElements" [hidden]="!(selectedItem.index != (this.items.length - 1))" class="nextBtn" (click)="nextBtnAction()">{{next}}</a>
+                <div id="myProgress" [ngClass]="routeAnimationsElements">
+                  <div id="myBar"></div>
+                </div>
+              </div>
+              <div class="noStatus-div" *ngIf="!selectedItem || !selectedStory">
+                <div>Nothing to Show. Please select one to see status.</div>
+              </div>
+              
+            </div>
+          </div>
+  
+        <div class="stories-section" [ngClass]="routeAnimationsElements" *ngIf="isLoading">
+          <div id="leftElem" class="left-section" [ngClass]="routeAnimationsElements">
+            <ul id="ulElem">
+              <li [ngClass]="routeAnimationsElements" class="status-main" *ngFor="let item of [1,2,3,4,5,6];">
+                <div>
+                  <label class="circle"></label>
+                </div>
+    
+                <div class="nameDiv" [ngClass]="routeAnimationsElements">
+                  <div class="name-d">
+                   
+                  </div>
+                  <div class="time-d" [ngClass]="routeAnimationsElements">
+                  
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="right-section">
+            <div class="content">
+              <div class="statusImg-d"  [ngClass]="routeAnimationsElements"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 

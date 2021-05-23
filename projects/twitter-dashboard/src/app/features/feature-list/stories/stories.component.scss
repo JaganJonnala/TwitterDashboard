@@ -1,0 +1,176 @@
+
+
+
+.stories-section{
+    display: flex;
+    width: 100%;
+}
+
+.left-section{
+    width: 35%;
+    overflow-y: scroll;
+    max-height: 490px;
+}
+
+.right-section{
+    border: 1px solid #eee;
+    width: 65%;
+    padding: 20px;
+    margin: 0px 10px;
+    max-height: 500px;
+    overflow-y: scroll;
+
+    .content{
+        height: 95%;
+        margin-left: 200px;
+
+        img{
+            height: 100%;
+            width: 60%;
+            border-radius: 10px;
+        }
+        .nextBtn{
+            cursor: pointer;
+            margin: 10px;
+            padding: 10px 17px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .nextBtn:hover{
+            background-color: #007bff;
+        }
+
+        .dbtn{
+            cursor: pointer;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 50%;
+            background-color: #ebf8eb;
+            color: #fff;;
+            height: 50px;
+            width: 50px;
+        }
+    }
+}
+.nextBtn1{
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px 17px;
+    border-radius: 50%;
+    background-color: #f4412d;
+    color: #fff;
+}
+.text-right{
+    float: right;
+}
+
+#myProgress {
+    width: 60%;
+    margin: 10px;
+    margin-left: 67px;
+    background-color: #ddd;
+  }
+  
+  #myBar {
+    width: 1%;
+    height: 7px;
+    background-color: #03a9f4;
+  }
+
+.visibilityHidden{
+    visibility: hidden !important;
+}
+.story-des{
+    position: absolute;
+    bottom: 120px;;
+    right: 300px;
+    color: #fff;
+    padding: 5px;
+    width: 200px;
+    overflow: hidden;
+    font-size: 10px;
+    text-overflow: ellipsis;
+}
+.story-name{
+    position: absolute;
+    bottom: 495px;
+    right: 387px;
+    color: #fff;
+    padding: 5px;
+    width: 200px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+ul{
+    padding: inherit;
+    list-style: none;
+}
+li.status-main{
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #eee;
+}
+li.status-main.active{
+    background-color: #37d0e1;
+}
+label.circle{
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    background: #e4e4e4;
+    border-radius: 50%;
+    padding: 15px 23px;
+    border: 3px solid #ccc;
+}
+.img-circle{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid #03a9f4;
+}
+.nameDiv{
+    margin-left: 15px;
+    .name{
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .name-d{
+        font-size: 14px;
+        width: 160px;
+        height: 20px;
+        display: block;
+        background-color: #eee;
+        margin-top: 10px;
+    }
+
+    .time{
+        font-size: 12px;
+    }
+
+    .time-d{
+        font-size: 12px;
+        width: 40px;
+        height: 10px;
+        display: block;
+        background-color: #eee;
+        margin-top: 10px;
+    }
+}
+
+    .statusImg-d{
+        width: 340px;
+        height: 410px;
+        display: block;
+        background-color: #eee;
+        margin-top: 10px
+    }
+
+    .noStatus-div{
+        margin-top: 200px;
+        text-align: center;
+    }
