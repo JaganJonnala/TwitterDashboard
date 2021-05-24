@@ -57,25 +57,31 @@ export class StoriesComponent implements OnInit {
     this.currentStoryIndex++;
     if(!this.selectedStory){
       if(this.items[this.selectedItem.index+1]){
-        this.selectedItem.isActive = false;
+        this.makeAllInActive();
         this.selectedItem = this.items[this.selectedItem.index+1];
         this.selectedItem.isActive = true;
         this.selectedStory = this.selectedItem.stories[0] || {};
         this.currentStoryIndex = 0;
       }
       else{
-        this.selectedItem.isActive = false;
+        this.makeAllInActive();
         return;
       }
     }
     this.progressBarShow();
   }
 
+  makeAllInActive(){
+    this.items.forEach((item) =>{
+      item.isActive =false;
+    });
+  }
+
   prevBtnAction(){
     this.selectedStory = this.items[this.selectedItem.index].stories[this.currentStoryIndex-1];
     this.currentStoryIndex--;
     if(!this.selectedStory){
-      this.selectedItem.isActive = false;
+      this.makeAllInActive();
       this.selectedItem = this.items[this.selectedItem.index-1];
       this.selectedItem.isActive = true;
       this.selectedStory = this.selectedItem.stories[0] || {};
@@ -85,7 +91,7 @@ export class StoriesComponent implements OnInit {
   }
 
   statusClick(item){
-      this.selectedItem.isActive = false;
+      this.makeAllInActive();
       this.selectedItem = item;
       this.selectedItem.isActive = true;
       this.selectedStory = this.selectedItem.stories[0] || {};
@@ -96,9 +102,7 @@ export class StoriesComponent implements OnInit {
     }
 
   progressBarShow(){
-    var interval_id = window.setInterval(()=>{}, 99999);
-    for (var i = 0; i < interval_id; i++)
-    window.clearInterval(i);
+    this.clearAllIntervals();
     
     var progressCount = 0;
     if (progressCount == 0) {
@@ -120,14 +124,22 @@ export class StoriesComponent implements OnInit {
   }
 
   closeStories(){
-    var interval_id = window.setInterval(()=>{}, 99999);
-    for (var i = 0; i < interval_id; i++)
-    window.clearInterval(i);
+    this.clearAllIntervals();
     this.selectedStory = undefined;
-    this.selectedItem.isActive = false;
+    this.makeAllInActive();
   }
 
   back(){
     this.router.navigate(['/twitter-dashboard']);
+  }
+
+  ngOnDestroy(){
+    this.clearAllIntervals();
+  }
+
+  clearAllIntervals(){
+    var interval_id = window.setInterval(()=>{}, 99999);
+    for (var i = 0; i < interval_id; i++)
+    window.clearInterval(i);
   }
 }

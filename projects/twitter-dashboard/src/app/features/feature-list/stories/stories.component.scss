@@ -163,11 +163,13 @@ label.circle{
 }
 
     .statusImg-d{
-        width: 340px;
+        width: 300px;
         height: 410px;
         display: block;
+        border-radius: 10px;
         background-color: #eee;
-        margin-top: 10px
+        margin-top: 10px;
+        margin-left: 40px;
     }
 
     .noStatus-div{
