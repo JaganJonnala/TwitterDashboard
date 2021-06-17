@@ -1,0 +1,160 @@
+<div class="pl_cont">
+  <div class="search_cont">
+    <mat-accordion>
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Search Criteria
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="s_cont">
+          <div class="s_l_cont">
+            <div class="row align-items-end">
+                <div class="col-md-4 col-lg-3 w-120">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Company</mat-label>
+                    <mat-select [(ngModel)]="selectedCompanyValue" name="company">
+                      <mat-option *ngFor="let company of companies" [value]="company.value">
+                        {{company.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 col-lg-3 w-120">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Region</mat-label>
+                    <mat-select [(ngModel)]="selectedRegionValue" name="region">
+                      <mat-option *ngFor="let region of regions" [value]="region.value">
+                        {{region.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 col-lg-3 w-120">
+                  <mat-form-field>
+                    <input matInput name="epn" type="text" placeholder="English Product Name"  [(ngModel)]="epn" required >
+                    <mat-error>This field is required</mat-error>
+                   </mat-form-field>
+                </div>
+                
+                <div class="col-md-4 col-lg-3 w-120">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Product Type</mat-label>
+                    <mat-select [(ngModel)]="selectedProductType" name="productType">
+                      <mat-option *ngFor="let productType of productTypes" [value]="productType.value">
+                        {{productType.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 col-lg-3 w-120">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <mat-select [(ngModel)]="selectedCountry" name="country">
+                      <mat-option *ngFor="let country of countries" [value]="country.value">
+                        {{country.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                  <div class="col-md-4 col-lg-3 w-120" *ngIf="isAdvancedSearch">
+                    <mat-form-field>
+                      <input matInput name="opn" type="text" placeholder="Original Product Name"  [(ngModel)]="opn" required >
+                      <mat-error>This field is required</mat-error>
+                     </mat-form-field>
+                  </div>
+
+                  <div class="col-md-4 col-lg-3 w-120" *ngIf="isAdvancedSearch">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Select main line of business</mat-label>
+                      <mat-select [(ngModel)]="lineOfBusiness" name="country">
+                        <mat-option *ngFor="let business of businesses" [value]="business.value">
+                          {{business.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-4 col-lg-3 w-120" *ngIf="isAdvancedSearch">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Select Status</mat-label>
+                      <mat-select [(ngModel)]="selectedStatus" name="status">
+                        <mat-option *ngFor="let status of statuses" [value]="status.value">
+                          {{status.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-3 w-120" *ngIf="isAdvancedSearch">
+                    <mat-form-field>
+                      <input matInput name="occ" type="text" placeholder="Official Classification Code" [(ngModel)]="occ" required >
+                      <mat-error>This field is required</mat-error>
+                     </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-3 w-120" *ngIf="isAdvancedSearch">
+                      <mat-form-field>
+                        <input matInput name="scp" type="text" placeholder="Search Code Provided" [(ngModel)]="scp" required >
+                        <!-- <span matPostfix>
+                          <mat-icon matPostfix>search</mat-icon>
+                        </span> -->
+                        <mat-error>This field is required</mat-error>
+                       </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-3 w-120" *ngIf="isAdvancedSearch">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Enter Reference Date</mat-label>
+                      <input matInput [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+          </div>
+      
+          <div class="s_r_cont">
+              <button class="btn btn_bl" (click)="searchSubmit()" mat-raised-button>Search</button>
+              <button class="btn" (click)="clearSearch()" mat-raised-button>Clear</button>
+            </div>
+        </div>
+        <hr>
+        <label class="s-lbl" (click)="isAdvancedSearch = !isAdvancedSearch">++{{isAdvancedSearch ? 'Basic Search':'Advanced Search'}}</label>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="table_cont">
+        <table mat-table #outerSort="matSort" [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
+          <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+            <th class="text-capitalize" mat-header-cell *matHeaderCellDef mat-sort-header> {{column}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+              <div class="example-element-detail" *ngIf="element.addresses?.data.length" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
+                  <table class="nested_table_bg" #innerTables mat-table #innerSort="matSort" [dataSource]="element.addresses" matSort>
+                    <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns">
+                      <th  class="text-capitalize" mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
+                      <td mat-cell *matCellDef="let element"> {{element[innerColumn]}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="innerDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></tr>
+                  </table>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+          <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" [class.example-element-row]="element.addresses?.data.length"
+           [class.example-expanded-row]="expandedElement === element" (click)="toggleRow(element)">
+          </tr>
+          <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </table>
+        
+        <mat-paginator #paginator pageSize=6 [pageSizeOptions]="[2, 4, 6, 10]" 
+        showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+

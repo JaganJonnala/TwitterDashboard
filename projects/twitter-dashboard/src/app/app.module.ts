@@ -1,3 +1,4 @@
+import { ProductLibraryComponent } from './features/feature-list/product-library/product-library.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -20,6 +21,7 @@ import { AppComponent } from './app/app.component';
     AppRoutingModule
   ],
   declarations: [AppComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers:[CoreModule]
 })
 export class AppModule {}

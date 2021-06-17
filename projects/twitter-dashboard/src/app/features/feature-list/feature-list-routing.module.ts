@@ -1,3 +1,4 @@
+import { ProductLibraryComponent } from './product-library/product-library.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { PostViewsComponent } from './post-views/post-views.component';
 import { RecentPostsComponent } from './recent-posts/recent-posts.component';
@@ -32,6 +33,11 @@ const routes: Routes = [
     path: 'stories',
     component: StoriesComponent,
     data: { title: 'Stories' }
+  },
+  {
+    path: 'productlibrary',
+    component: ProductLibraryComponent,
+    data: { title: 'ProductLibrary' }
   }
 ];
 

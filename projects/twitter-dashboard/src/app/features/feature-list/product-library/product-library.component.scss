@@ -1,0 +1,109 @@
+table {
+    width: 100%;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: #d3e8fd;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .nested_table_bg{
+    background-color: #d8e3f5;
+  }
+  .example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+  }
+  
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+  
+  .inner-table {
+    width: 100%;
+  }
+  
+  .inner-table mat-form-field {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .text-capitalize{
+    text-transform: capitalize;
+  }
+  
+  .pl_cont{
+      margin: 20px;
+      padding: 20px;
+  }
+  .search_cont{
+      margin-bottom: 10px;
+     
+  }
+  .s_cont{
+        display: flex;
+        width: 100%;
+  }
+
+  .s_l_cont{
+      width: 90%;
+  }
+
+  .s_r_cont{
+    width: 10%;
+
+    .btn{
+        margin: 10px;
+        width: 120px;
+    }
+
+    .btn_bl{
+        background-color: #0404b9;
+        color: #fff;
+    }
+}
+
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  .s-lbl{
+      float: right;
+      text-decoration: underline;
+      color:#0404b9;
+      cursor: pointer;
+  }
+
+  .w-120{
+      width: 120px !important;
+  }

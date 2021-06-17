@@ -42,6 +42,14 @@ export const features: Feature[] = [
     github: 'https://github.com/angular/angular-cli',
     routerLink: 'twitter-dashboard/stories',
     documentation: 'https://cli.angular.io/'
+  },
+  {
+    name: 'Product Library',
+    version: '',
+    description: 'Product Library',
+    github: 'https://github.com/angular/angular-cli',
+    routerLink: 'twitter-dashboard/productlibrary',
+    documentation: 'https://cli.angular.io/'
   }
 ];
 
